@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FSOLI - Portal GDE</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; }
+      /* Centrar todas las imágenes PNG */
+      img[src$=".png"] {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  header { text-align: center; background-color: transparent; padding: 10px; }
+    section { margin-top: 20px; }
+    footer { text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(0, 0, 0, 0.76); color: white; }
+    .container { width: 90%; margin: auto; }
+    .employee { margin: 10px; padding: 10px; border: 1px solid #ccc; }
+  .login-form { width: 300px; margin: auto; padding: 20px; border: 1px solid transparent; border-radius: 5px; background:#fff; }
+  .login-form input { width: 96%; padding: 10px; margin: 10px 0; }
+  .login-form button { width: 104%; padding: 10px; background-color: #351f99; color: white; border: none; cursor: pointer; }
+    .hidden { display: none; }
+    body {
+      background-image: url('paisaje.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* === Estilos Dashboard GDE === */
+    :root{
+      --blue:#0b6aa4;
+      --blue-dark:#055b86;
+      --muted:#f3f5f7;
+      --panel:#e9eef3;
+      --text:#2b3a42;
+      --white:#fff;
+    }
+    .topbar{
+      background:linear-gradient(180deg,var(--blue),var(--blue-dark));
+      color:var(--white);
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:220px}
+    .logo{
+      width:300px;
+      height:100px;
+      max-width:100%;
+      border-radius:6px;
+      display:block;
+      margin-left:auto;
+      margin-right:auto;
+      color:var(--blue);
+      font-weight:bold;
+    }
+    .brand h1{font-size:16px;margin:0}
+    .search{margin-left:8px;flex:1;display:flex;align-items:center;}
+    .search input{width:100%;padding:8px 12px;border-radius:4px;border:0;max-width:520px;}
+    .user{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:14px}
+    .mainContentContainer{display:flex;gap:18px;padding:18px;max-width:1200px;margin:18px auto;}
+    .main{flex:1;background:var(--white);border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.06);padding:14px;}
+    .tabs{display:flex;gap:12px;border-bottom:1px solid #d7dbe0;padding-bottom:10px;margin-bottom:12px;}
+    .tab{padding:8px 14px;border-radius:4px;background:transparent;color:var(--blue-dark);cursor:pointer}
+    .tab.active{background:var(--panel);font-weight:600}
+    .card{padding:12px;background:#fbfdff;border-radius:6px;border:1px solid #e3e8ee;}
+    .card h3{margin:0 0 10px 0;font-size:15px;color:var(--blue-dark)}
+    .subtabs{display:flex;gap:12px;margin-bottom:12px}
+    .subtab{padding:6px 10px;border-radius:4px;background:var(--panel);font-size:13px}
+    table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px;}
+    thead th{background:linear-gradient(90deg,#5a91b8,#4f8fb7);color:white;text-align:center;padding:10px;font-weight:600;}
+    tbody td{padding:10px;border-bottom:1px solid #eef2f6;background:linear-gradient(180deg,#ffffff,#fbfdff);text-align:center;}
+    tbody tr:hover td{background:#f7fbff}
+    .sidebar{width:240px;display:flex;flex-direction:column;gap:12px;}
+    .box{background:var(--white);border-radius:6px;padding:12px;border:1px solid #e3e8ee;}
+    .box h4{margin:0 0 10px 0;font-size:14px;color:var(--blue-dark)}
+    .small-table{font-size:13px;border-collapse:collapse;width:100%}
+    .small-table td{padding:6px;border-bottom:1px solid #f0f2f4}
+
+    /* Insignias */
+    .badge {
+      display:inline-block;
+      min-width:28px;
+      padding:4px 8px;
+      border-radius:12px;
+      font-size:12px;
+      font-weight:600;
+      text-align:center;
+      background:#e8f0f8;
+      color:#055b86;
+    }
+    .badge.success { background:#d4f4e0; color:#1c7a2d; }
+    .badge.warning { background:#fff3cd; color:#856404; }
+    .badge.danger  { background:#f8d7da; color:#721c24; }
+    .action button {
+      border:none;
+      background:#0b6aa4;
+      color:#fff;
+      border-radius:4px;
+      padding:4px 8px;
+      cursor:pointer;
+    }
+    .action button:hover { background:#055b86; }
+
+    @media (max-width:920px){
+      .mainContentContainer{padding:12px;flex-direction:column;}
+      .sidebar{width:100%}
+      table{min-width:600px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo de la empresa" class="logo">
+  <h1>Gestión Documental Electrónica</h1>
+  <h2>Ingrese al Sistema con Usuario/Cuil/Cuit y contraseña</h2>
+</header>
+
+<!-- Login -->
+<section id="loginSection" class="container">
+  <h2 style="text-align:center;">Iniciar Sesión</h2>
+  <div class="login-form">
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+  </div>
+</section>
+
+<!-- Dashboard y empleados -->
+<section id="mainContent" class="hidden">
+
+  <!-- Dashboard estilo GDE -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">AR</div>
+      <div>
+        <h1>Gestión Documental Electrónica</h1>
+        <div style="font-size:12px;opacity:.9">Escritorio Único</div>
+      </div>
+    </div>
+    <div class="search">
+      <input aria-label="Ingrese el número GDE" placeholder="Ingrese el número GDE" />
+    </div>
+    <div class="user">
+      <div style="font-size:13px">DADAMOLINA</div>
+      <div style="width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#0b6aa4">DM</div>
+    </div>
+  </header>
+
+  <div class="mainContentContainer">
+    <main class="main">
+      <div class="tabs">
+        <div class="tab active">Inicio</div>
+        <div class="tab">Datos Personales</div>
+        <div class="tab">Configuración</div>
+        <div class="tab">Notificación</div>
+        <div class="tab">Consulta Usuarios</div>
+      </div>
+
+      <div class="card">
+        <h3>Tareas</h3>
+        <div class="subtabs">
+          <div class="subtab">Mis Tareas</div>
+          <div class="subtab">Buzón Grupal</div>
+          <div class="subtab">Configuración de buzones</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Sistema</th>
+              <th>Total</th>
+              <th>Elegir días a descontar</th>
+              <th>Restante</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GEDO</strong></td>
+              <td><span class="badge" id="total-gedo">100</span></td>
+              <td>
+                <input type="number" id="input-gedo" min="0" max="100" value="0" style="width:60px;">
+                <button onclick="descontar('gedo')">Descontar</button>
+              </td>
+              <td><span class="badge" id="restante-gedo">100</span></td>
+              <td class="action"><button>▶</button></td>
+            </tr>
+            <tr>
+              <td><strong>CCOO</strong></td>
+              <td><span class="badge" id="total-ccoo">80</span></td>
+              <td>
+                <input type="number" id="input-ccoo" min="0" max="80" value="0" style="width:60px;">
+                <button onclick="descontar('ccoo')">Descontar</button>
+              </td>
+              <td><span class="badge" id="restante-ccoo">80</span></td>
+              <td class="action"><button>▶</button></td>
+            </tr>
+            <tr>
+              <td><strong>EE</strong></td>
+              <td><span class="badge" id="total-ee">60</span></td>
+              <td>
+                <input type="number" id="input-ee" min="0" max="60" value="0" style="width:60px;">
+                <button onclick="descontar('ee')">Descontar</button>
+              </td>
+              <td><span class="badge" id="restante-ee">60</span></td>
+              <td class="action"><button>▶</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <div class="box">
+        <h4>Sistemas GDE</h4>
+        <table class="small-table">
+          <tr><td>Módulo</td><td>LUE</td></tr>
+          <tr><td>Alerta</td><td>0</td></tr>
+          <tr><td>Aviso</td><td>0</td></tr>
+        </table>
+      </div>
+      <div class="box">
+        <h4>Mis Supervisados</h4>
+        <p>No hay supervisados asignados.</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Sección empleados -->
+  <h2 style="text-align:center">Solicitudes de Permisos</h2>
+  <div class="container" id="employeeContainer"></div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Molina Darío David. GEDE - Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const users = {
+  "admin1": "1234",
+  "admin2": "1234",
+  "admin3": "1234",
+  "admin4": "1234"
+};
+
+function login() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  if (users[username] && users[username] === password) {
+    document.getElementById("loginSection").classList.add("hidden");
+    document.getElementById("mainContent").classList.remove("hidden");
+    fetchEmployees();
+  } else {
+    alert("Usuario o contraseña incorrectos");
+  }
+}
+
+async function fetchEmployees() {
+  const response = await fetch('/getEmployees');
+  const employees = await response.json();
+  renderEmployees(employees);
+}
+
+function requestPermission(employeeId) {
+  fetch('/requestPermission', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: employeeId })
+  }).then(response => response.json())
+    .then(data => alert(data.message));
+}
+
+function renderEmployees(employees) {
+  const container = document.getElementById("employeeContainer");
+  container.innerHTML = "";
+  employees.forEach(emp => {
+    const div = document.createElement("div");
+    div.className = "employee";
+    div.innerHTML = `<strong>${emp.name}</strong> - Solicitud: ${emp.request} <br>
+                     <button onclick="requestPermission(${emp.id})">Solicitar</button>`;
+    container.appendChild(div);
+  });
+}
+</script>
+
+</body>
+</html>
